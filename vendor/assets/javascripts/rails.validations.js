@@ -160,8 +160,10 @@ var clientSideValidations = {
           }
         }
       },
-      numericality: function(element, options) {
-        if (!/^-?(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d*)?$/.test(element.val()) && element.val() != '') {
+      numericality: function (element, options) {
+        if (element.val() === "" && options.allow_nil === true) {
+          return;
+        } else if (!/^-?(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d*)?$/.test(element.val())) {
           return options.messages.numericality;
         }
 

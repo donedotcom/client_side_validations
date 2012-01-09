@@ -156,3 +156,8 @@ test('blank values should be evaluated as zero', function() {
   equal(clientSideValidations.validators.local.numericality(element, options), undefined);
 });
 
+test('when allowing nil', function() {
+  var element = $('<input type="text" />');
+  var options = { messages: { numericality: "failed validation" }, allow_nil: true };
+  equal(ClientSideValidations.validators.local.numericality(element, options), undefined);
+});
