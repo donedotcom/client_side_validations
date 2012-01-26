@@ -136,6 +136,8 @@ window.ClientSideValidations =
         return options.message if options.without and options.without.test(element.val())
 
       numericality: (element, options) ->
+        return if options.allow_nil == true and element.val() == ""
+
         unless /^-?(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d*)?$/.test(element.val())
           return options.messages.numericality
 
