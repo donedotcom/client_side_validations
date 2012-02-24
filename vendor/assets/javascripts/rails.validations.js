@@ -46,6 +46,10 @@
         'change': function() {
           return $(this).data('changed', true);
         },
+        'keyup': function() {
+          $(this).trigger('change');
+          return $(this).isValid(settings.validators);
+        },
         'element:validate:after': function(eventData) {
           return ClientSideValidations.callbacks.element.after($(this), eventData);
         },
