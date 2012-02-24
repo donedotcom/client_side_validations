@@ -107,3 +107,4 @@ asyncTest('Ensure ajax:beforeSend is not from a bubbled event', 1, function() {
     ok(!input.parent().hasClass('field_with_errors'));
   });
 });
+
