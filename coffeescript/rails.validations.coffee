@@ -27,6 +27,10 @@ $.fn.validate = ->
     form.find('[data-validate="true"]:input:enabled:not(:radio)').live(event, binding) for event, binding of {
       'focusout':                -> $(@).isValid(settings.validators)
       'change':                  -> $(@).data('changed', true)
+      'keyup':                   ->
+        $(@).trigger('change')
+        $(@).isValid(settings.validators)
+      
       # Callbacks
       'element:validate:after':  (eventData) -> ClientSideValidations.callbacks.element.after($(@), eventData)
       'element:validate:before': (eventData) -> ClientSideValidations.callbacks.element.before($(@), eventData)
